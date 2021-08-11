@@ -12,7 +12,7 @@ from tf_keras_vis.gradcam_plus_plus import GradcamPlusPlus
 from tf_keras_vis.utils.model_modifiers import ReplaceToLinear
 from tf_keras_vis.utils.scores import CategoricalScore
 
-SAVED_WEIGHTS = 'trained_models/classification/vgg16_flower_model_weights1.h5'
+SAVED_WEIGHTS = 'trained_models/classification/vgg16_flower_model_weights.h5'
 
 IMAGE_WIDTH = 224
 IMAGE_HEIGHT = 224
@@ -90,8 +90,8 @@ def predict_flower(img):
     # cam = GradcamPlusPlus(model, model_modifier=ReplaceToLinear(), clone=True)
     heatmaps = cam(CategoricalScore([indices[0], indices[1]]), np.array([data, data]), penultimate_layer=-1)
 
-    return '{} ({:.2f}) | {} ({:.2f})'.format(NAME[indices[0]], predict[indices[0]],
-                                              NAME[indices[1]], predict[indices[1]]), heatmaps
+    return '{} ({:.2f}%) | {} ({:.2f}%)'.format(NAME[indices[0]], predict[indices[0]] * 100,
+                                                NAME[indices[1]], predict[indices[1]] * 100), heatmaps
 
 
 def visualize(data, titles, xlabels, ylabels):

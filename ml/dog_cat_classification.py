@@ -91,8 +91,8 @@ def predict_dog_cat(img):
     # cam = GradcamPlusPlus(model, model_modifier=ReplaceToLinear(), clone=True)
     heatmaps = cam(CategoricalScore([indices[0], indices[1]]), np.array([data, data]), penultimate_layer=-1)
 
-    return '{} ({:.2f}) | {} ({:.2f})'.format(NAME[indices[0]], predict[indices[0]],
-                                              NAME[indices[1]], predict[indices[1]]), heatmaps
+    return '{} ({:.2f}%) | {} ({:.2f}%)'.format(NAME[indices[0]], predict[indices[0]] * 100,
+                                                NAME[indices[1]], predict[indices[1]] * 100), heatmaps
 
 
 def visualize(data, titles, xlabels, ylabels):

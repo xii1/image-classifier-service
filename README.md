@@ -33,13 +33,30 @@ http://localhost:8080/classifier/dogcat
 ![Demo1](/assets/dog_cat_1.png "Demo1")
 ![Demo2](/assets/dog_cat_2.png "Demo2")
 
+- Flower classification demo (daisy, dandelion, rose, sunflower, tulip)
+```
+http://localhost:8080/classifier/flower
+```
+
+![Demo1](/assets/flower_1.png "Demo1")
+![Demo2](/assets/flower_2.png "Demo2")
+
+- Covid19 classification demo (covid, normal, viral pneumonia)
+```
+http://localhost:8080/classifier/covid
+```
+
+![Demo1](/assets/covid_1.png "Demo1")
+![Demo2](/assets/covid_2.png "Demo2")
+
 ## Run for production
 ```bash
 ./bin/deploy_prod <tag> [scale]
 ```
 
 ## Dataset
-
+- Flowers (daisy, dandelion, rose, sunflower, tulip): https://www.kaggle.com/alxmamaev/flowers-recognition
+- Covid19 (covid, normal, viral pneumonia): https://www.kaggle.com/pranavraikokte/covid19-image-dataset
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details
