@@ -1,0 +1,9 @@
+flask
+flask-cors
+numpy
+pandas
+matplotlib
+seaborn
+tensorflow
+tf-keras-vis
+pillow
