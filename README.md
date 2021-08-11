@@ -29,17 +29,22 @@ These instructions will get you building and running the project on your local m
 ```
 http://localhost:8080/classifier/dogcat
 ```
-
-![Demo1](/assets/dog_cat_1.png "Demo1")
-![Demo2](/assets/dog_cat_2.png "Demo2")
+![Demo1](/assets/dog.png "Demo1")
+![Demo2](/assets/cat.png "Demo2")
+![Demo3](/assets/dog_cat_1.png "Demo3")
+![Demo4](/assets/dog_cat_2.png "Demo4")
+![Demo5](/assets/dog_cat_3.png "Demo5")
 
 - Flower classification demo (daisy, dandelion, rose, sunflower, tulip)
 ```
 http://localhost:8080/classifier/flower
 ```
 
-![Demo1](/assets/flower_1.png "Demo1")
-![Demo2](/assets/flower_2.png "Demo2")
+![Demo1](/assets/daisy.png "Demo1")
+![Demo2](/assets/dandelion.png "Demo2")
+![Demo3](/assets/rose.png "Demo3")
+![Demo4](/assets/sunflower.png "Demo4")
+![Demo5](/assets/tulip.png "Demo5")
 
 - Covid19 classification demo (covid, normal, viral pneumonia)
 ```
