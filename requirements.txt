@@ -5,5 +5,6 @@ pandas
 matplotlib
 seaborn
 tensorflow
+tf_keras_vis
 pillow
 opencv-python
