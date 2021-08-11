@@ -7,7 +7,7 @@ classifier = Blueprint('classifier', __name__)
 
 
 @classifier.route('/dogcat', methods=['GET', 'POST'])
-def recognize_dog_cat_with_vgg():
+def recognize_dog_cat():
     if request.method == 'POST':
         uploaded_file = request.files['file']
         img = convert_image_to_base64(uploaded_file)
