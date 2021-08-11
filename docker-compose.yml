@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  ai-service:
+    image: ghcr.io/xii1/image-classifier-service:$AI_SERVICE_TAG
+    volumes:
+      - trained_models:/app/trained_models
+    ports:
+      - "8080"
+    restart: always
+    networks:
+      - ml
+
+  load-balancer:
+    image: nginx:latest
+    volumes:
+      - ./deploy/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8080:80"
+    networks:
+      - ml
+    depends_on:
+      - ai-service
+
+networks:
+  ml:
+volumes:
+  trained_models:
