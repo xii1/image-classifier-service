@@ -19,14 +19,19 @@ These instructions will get you building and running the project on your local m
 ```
 
 ## Run for development
-
 - Start localhost server for development (included hot-reload)
 ```bash
 ./bin/run
 ```
 
 ## List of demos
+- Dog Cat classification demo
+```
+http://localhost:8080/classifier/dogcat
+```
 
+![Demo1](/assets/dog_cat_1.png "Demo1")
+![Demo2](/assets/dog_cat_2.png "Demo2")
 
 ## Run for production
 ```bash
