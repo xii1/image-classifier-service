@@ -1,6 +1,5 @@
 import numpy as np
 from PIL import Image
-from matplotlib import pyplot as plt
 from tensorflow.keras import Model
 from tensorflow.keras import activations, losses, optimizers
 from tensorflow.keras.applications.vgg16 import VGG16
@@ -11,6 +10,8 @@ from tf_keras_vis.gradcam import Gradcam
 from tf_keras_vis.gradcam_plus_plus import GradcamPlusPlus
 from tf_keras_vis.utils.model_modifiers import ReplaceToLinear
 from tf_keras_vis.utils.scores import CategoricalScore
+
+from utils import visualize
 
 SAVED_WEIGHTS = 'trained_models/classification/vgg16_dog_cat_model_weights.h5'
 
@@ -94,23 +95,5 @@ def predict_image(img):
     return '{} ({:.2f}) | {} ({:.2f})'.format(NAME[indices[0]], predict[indices[0]],
                                               NAME[indices[1]], predict[indices[1]]), heatmaps
 
-
-def visualize(data, titles, xlabels, ylabels):
-    fig, axes = plt.subplots(1, len(titles), squeeze=False)
-    fig.suptitle('Visualization', fontsize=16)
-
-    for i in range(len(titles)):
-        axes[0, i].set_title(titles[i])
-        axes[0, i].set_xlabel(xlabels[i])
-        axes[0, i].set_ylabel(ylabels[i])
-
-        for s in data[i].keys():
-            axes[0, i].plot(data[i][s], label=s)
-
-        axes[0, i].legend(loc="best")
-        axes[0, i].grid()
-
-    plt.tight_layout()
-    plt.show()
 
 # train_model_by_transfer_learning_with_vgg16()

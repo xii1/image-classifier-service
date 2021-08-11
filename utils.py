@@ -4,6 +4,26 @@ import io
 import cv2
 import numpy as np
 from PIL import Image
+from matplotlib import pyplot as plt
+
+
+def visualize(data, titles, xlabels, ylabels):
+    fig, axes = plt.subplots(1, len(titles), squeeze=False)
+    fig.suptitle('Visualization', fontsize=16)
+
+    for i in range(len(titles)):
+        axes[0, i].set_title(titles[i])
+        axes[0, i].set_xlabel(xlabels[i])
+        axes[0, i].set_ylabel(ylabels[i])
+
+        for s in data[i].keys():
+            axes[0, i].plot(data[i][s], label=s)
+
+        axes[0, i].legend(loc="best")
+        axes[0, i].grid()
+
+    plt.tight_layout()
+    plt.show()
 
 
 def convert_image_to_base64(img):
