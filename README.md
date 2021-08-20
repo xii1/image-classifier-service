@@ -54,7 +54,15 @@ http://localhost:8080/classifier/covid
 ![Demo1](/assets/covid_1.png "Demo1")
 ![Demo2](/assets/covid_2.png "Demo2")
 
-- Face detection demo (frontal face with eyes)
+- Facial expression demo (anger, contempt, disgust, fear, happy, sadness, surprise)
+```
+http://localhost:8080/classifier/emotion
+```
+
+![Demo1](/assets/happy.png "Demo1")
+![Demo2](/assets/surprise.png "Demo2")
+
+- Face detection demo with camera (frontal face with eyes)
 ```
 http://localhost:8080/detector/face
 ```
@@ -67,6 +75,7 @@ http://localhost:8080/detector/face
 ## Dataset
 - Flowers (daisy, dandelion, rose, sunflower, tulip): https://www.kaggle.com/alxmamaev/flowers-recognition
 - Covid19 (covid, normal, viral pneumonia): https://www.kaggle.com/pranavraikokte/covid19-image-dataset
+- Facial expression small dataset (anger, contempt, disgust, fear, happy, sadness, surprise): https://www.kaggle.com/shawon10/ckplus
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details

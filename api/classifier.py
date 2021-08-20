@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request
 
 from ml.covid_classification import predict_covid
 from ml.dog_cat_classification import predict_dog_cat
+from ml.facial_expression_classification import predict_facial_expression
 from ml.flower_classification import predict_flower
 from utils import convert_image_to_base64, get_image_with_heatmap_overlay, convert_opencv_image_to_base64
 
@@ -57,3 +58,20 @@ def recognize_covid():
 
         return render_template('result.html', img=img, img_heatmaps=img_heatmaps, message=result)
     return render_template('upload.html', url='covid')
+
+
+@classifier.route('/emotion', methods=['GET', 'POST'])
+def recognize_emotion():
+    if request.method == 'POST':
+        uploaded_file = request.files['file']
+        img = convert_image_to_base64(uploaded_file)
+        result, heatmaps = predict_facial_expression(uploaded_file)
+
+        img_heatmaps = []
+        for hm in heatmaps:
+            img_hm = get_image_with_heatmap_overlay(uploaded_file, hm)
+            img_hm = convert_opencv_image_to_base64(img_hm)
+            img_heatmaps.append(img_hm)
+
+        return render_template('result.html', img=img, img_heatmaps=img_heatmaps, message=result)
+    return render_template('upload.html', url='emotion')
