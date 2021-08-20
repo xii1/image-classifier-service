@@ -54,6 +54,11 @@ http://localhost:8080/classifier/covid
 ![Demo1](/assets/covid_1.png "Demo1")
 ![Demo2](/assets/covid_2.png "Demo2")
 
+- Face detection demo (frontal face with eyes)
+```
+http://localhost:8080/detector/face
+```
+
 ## Run for production
 ```bash
 ./bin/deploy_prod <tag> [scale]
