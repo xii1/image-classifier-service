@@ -1,15 +1,15 @@
 import cv2
 
+from ml.facial_expression_classification import predict_facial_expression_by_array, IMAGE_WIDTH, IMAGE_HEIGHT
 from video.camera import Camera
 
 OPENCV_HAARCASCADE_FRONTALFACE_FILE = 'trained_models/opencv/haarcascades/haarcascade_frontalface_alt.xml'
-OPENCV_HAARCASCADE_EYE_FILE = 'trained_models/opencv/haarcascades/haarcascade_eye_tree_eyeglasses.xml'
 
 
-class FaceDetectionCamera(Camera):
+class EmotionDetectionCamera(Camera):
     def __init__(self):
         self.face_cascade = cv2.CascadeClassifier(OPENCV_HAARCASCADE_FRONTALFACE_FILE)
-        self.eye_cascade = cv2.CascadeClassifier(OPENCV_HAARCASCADE_EYE_FILE)
+        self.font = cv2.FONT_HERSHEY_SIMPLEX
         super().__init__()
 
     def get_frame(self):
@@ -21,14 +21,12 @@ class FaceDetectionCamera(Camera):
         for (x, y, w, h) in faces:
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 3)
 
-            face_roi = frame_gray[y:y + h, x:x + w]
-            eyes = self.eye_cascade.detectMultiScale(face_roi, 1.3, 5)
-            for (x_e, y_e, w_e, h_e) in eyes:
-                cv2.rectangle(frame, (x + x_e, y + y_e), (x + x_e + w_e, y + y_e + h_e), (0, 0, 255), 3)
+            face_roi = frame[y:y + h, x:x + w]
+            face_roi = cv2.resize(face_roi, (IMAGE_WIDTH, IMAGE_HEIGHT))
+            result = predict_facial_expression_by_array(face_roi)
 
-                eye_center = (x + x_e + w_e // 2, y + y_e + h_e // 2)
-                radius = int(round((w_e + h_e) * 0.25))
-                cv2.circle(frame, eye_center, radius, (255, 0, 0), 3)
+            cv2.rectangle(frame, (x, y - 40), (x + w, y), (0, 255, 0), -1)
+            cv2.putText(frame, result, (x + 10, y - 10), self.font, 0.7, (0, 0, 0), 2)
 
         _, jpeg = cv2.imencode('.jpg', frame)
         return jpeg.tobytes()

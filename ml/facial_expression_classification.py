@@ -98,6 +98,21 @@ def predict_facial_expression(img):
                                                 NAME[indices[1]], predict[indices[1]] * 100), heatmaps
 
 
+def predict_facial_expression_by_array(data):
+    data = data.astype('float32') / 255
+    input_data = np.expand_dims(data, axis=0)
+
+    model = create_model_with_vgg16()
+    model.load_weights(SAVED_WEIGHTS)
+    predict = np.squeeze(model.predict(input_data))
+
+    # get top 2 maximum indices
+    indices = (-predict).argsort()[:2]
+
+    return '{} ({:.2f}%) | {} ({:.2f}%)'.format(NAME[indices[0]], predict[indices[0]] * 100,
+                                                NAME[indices[1]], predict[indices[1]] * 100)
+
+
 def visualize(data, titles, xlabels, ylabels):
     fig, axes = plt.subplots(1, len(titles), squeeze=False)
     fig.suptitle('Visualization', fontsize=16)

@@ -67,6 +67,11 @@ http://localhost:8080/classifier/emotion
 http://localhost:8080/detector/face
 ```
 
+- Face expression detection demo with camera
+```
+http://localhost:8080/detector/emotion
+```
+
 ## Run for production
 ```bash
 ./bin/deploy_prod <tag> [scale]
